@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('BajarDependencias') {
             steps {
-                sh "./mvn verify -Pperformance"
+                sh "mvn verify -Pperformance"
             }
         }
 
