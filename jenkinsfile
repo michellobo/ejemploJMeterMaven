@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('BajarDependencias') {
+            steps {
+                sh "./mvn verify -Pperformance"
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh "./mvnw clean"
+            }
+        }
+
+        stage('test') {
+            steps {
+                sh "./mvnw compile -e"
+            }
+        }
+
+        stage('test2') {
+            steps {
+                sh "./mvnw clean test -e"
+            }
+        }
+    }
+}
